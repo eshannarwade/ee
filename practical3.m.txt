@@ -1,0 +1,20 @@
+b_max=1;
+freq=100;
+w=2*pi*freq;
+t=0:1/6000:1/10;
+baa=sin(w*t)*(cos(0)+1j*sin(0));
+eaa=sin(w*t-120)*(cos(2*pi/3)-1j*sin(2*pi/3));
+ebb=sin(w*t-240)*(cos(4*pi/3)-1j*sin(4*pi/3));
+enet=baa+eaa+ebb;
+b_loop=cos(w*t)+1j*sin(w*t);
+circle=1.5*(cos(w*t)+1j*sin(w*t));
+for ii=1:length(t)
+    plot(circle,'k');
+    hold on;
+    plot([0 real(enet(ii))],[0 imag(enet(ii))],'r','LineWidth',3);
+    plot([0 real(b_loop(ii))],[0 imag(b_loop(ii))],'g','LineWidth',2);
+    axis square;
+    axis([-2,2,-2,2]);
+    drawnow;
+    hold off;
+end

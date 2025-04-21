@@ -1,0 +1,14 @@
+i_a=(0:20)*30;
+v_phase=zeros(1,21);
+e_a=277.0;
+x_s=1.0;
+theta=366.57*(pi/180);
+for ii=1:length(20)
+    v_phase(ii)=sqrt(e_a^2-(x_s*i_a(ii)*cos(theta))^2-(x_s*i_a(ii)*sin(theta))^2);
+end
+v_t=v_phase*sqrt(3);
+plot(i_a,v_t,'k','LineWidth',2);
+xlabel('terminal voltage(V)','FontWeight','bold');
+ylabel('field current(A)','FontWeight','bold');
+grid on;
+axis([0 60 400 550]);
